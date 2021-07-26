@@ -14,6 +14,17 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+    let noSpace = ""
+    let withSpace = ""
+for (i=1;i <= n; i++) {
+    noSpace = (i > 1) ? noSpace + "##" : "#"
+    withSpace = noSpace
+    for (j=1 + i; j <= n; j++) {
+        withSpace = " " + withSpace + " "
+    }
+    console.log(withSpace)
+}
+}
 
 module.exports = pyramid;
