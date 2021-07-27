@@ -15,6 +15,102 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
-function matrix(n) {}
+function matrix(n) {
+    const results = [];
+  
+    for (let i = 0; i < n; i++) {
+      results.push([]);
+    }
+  
+    let counter = 1;
+    let startColumn = 0;
+    let endColumn = n - 1;
+    let startRow = 0;
+    let endRow = n - 1;
+    while (startColumn <= endColumn && startRow <= endRow) {
+      // Top row
+      for (let i = startColumn; i <= endColumn; i++) {
+        results[startRow][i] = counter;
+        counter++;
+      }
+      startRow++;
+  
+      // Right column
+      for (let i = startRow; i <= endRow; i++) {
+        results[i][endColumn] = counter;
+        counter++;
+      }
+      endColumn--;
+  
+      // Bottom row
+      for (let i = endColumn; i >= startColumn; i--) {
+        results[endRow][i] = counter;
+        counter++;
+      }
+      endRow--;
+  
+      // start column
+      for (let i = endRow; i >= startRow; i--) {
+        results[i][startColumn] = counter;
+        counter++;
+      }
+      startColumn++;
+    }
+  
+    return results;
+  }
 
 module.exports = matrix;
+
+// function matrix(n) {
+    //     let result = []
+    //     let endRow = n-1
+    //     let endCol = n-1
+    //     let startRow = 1
+    //     let startCol = 0
+    //     let row = 0
+    //     let col = 0
+    //     let counter = 1
+    
+    //     for (let i=0; i < n; i++) {
+    //         result.push([])
+    //     }
+    
+    //     while (counter <= n * n) {
+    //         while (col <= endCol) {
+    //             result[row][col] = counter
+    //             col++
+    //             counter++
+    //         }
+    //         col = endCol
+    //         endCol = endCol - 1
+    //         row++
+    //         while (row <= endRow) {
+    //             result[row][col] = counter
+    //             row++
+    //             counter++
+    //         }
+    //         row = endRow
+    //         endRow = endRow - 1
+    //         col = col - 1
+    //         while (col >= startCol) {
+    //             result[row][col] = counter
+    //             col = col - 1
+    //             counter++       
+    //         }
+    //         col = startCol
+    //         startCol++
+    //         row = row - 1
+    //         while (row >= startRow) {
+    //             result[row][col] = counter
+    //             row = row - 1
+    //             counter++       
+    //         }
+    //         row = startRow
+    //         startRow++
+    //         col++
+    
+    
+    //     }
+    //     return result
+    // }
